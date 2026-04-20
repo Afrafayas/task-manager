@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
-      default: "",  
+      default: "",
     },
     status: {
       type: String,
@@ -21,6 +21,21 @@ const taskSchema = new mongoose.Schema(
       type: String,
       enum: ["Low", "Medium", "High"],
       default: "Medium",
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    workspace: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Workspace",
+      default: null,
+    },
+    assignedTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
     },
   },
   { timestamps: true }
