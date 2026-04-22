@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../store/authSlice";
 import { toast } from "react-hot-toast";
 
-// Zod schema
 const schema = z.object({
   email: z.string().email("Valid email is required"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -29,21 +28,17 @@ export default function Login() {
       toast.success("Login successful!");
       navigate("/");
     } catch (err) {
-      toast.error(err);
+      toast.error(typeof err === "string" ? err : "Login failed!");
     }
   };
 
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center">
       <div className="bg-white rounded-2xl shadow-sm p-8 w-full max-w-md">
-
-        {/* Header */}
         <h1 className="text-2xl font-bold text-slate-800 mb-1">Welcome back!</h1>
         <p className="text-slate-500 text-sm mb-6">Login to your account</p>
 
-        {/* Form */}
         <div className="flex flex-col gap-4">
-          {/* Email */}
           <div>
             <label className="text-sm font-medium text-slate-700">Email</label>
             <input
@@ -57,7 +52,6 @@ export default function Login() {
             )}
           </div>
 
-          {/* Password */}
           <div>
             <label className="text-sm font-medium text-slate-700">Password</label>
             <input

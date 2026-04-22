@@ -70,7 +70,7 @@ export default function Header({ onAddTask, onToggleSidebar, activeWorkspace }) 
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className="w-9 h-9 rounded-xl bg-violet-100 text-violet-700 font-bold text-sm flex items-center justify-center hover:bg-violet-200 transition"
+              className="w-9 h-9 rounded-full bg-violet-600 text-white font-bold text-sm flex items-center justify-center hover:bg-violet-700 transition shadow-sm"
             >
               {user?.name?.charAt(0).toUpperCase()}
             </button>

@@ -3,19 +3,17 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const authHeader = () => ({
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
 });
 
 export const fetchWorkspaces = async () => {
-  const response = await axios.get(`${API_URL}/workspaces`, authHeader());
+  const response = await axios.get(`${API_URL}/workspace`, authHeader());
   return response.data;
 };
 
 export const createWorkspace = async (name) => {
   const response = await axios.post(
-    `${API_URL}/workspaces`,
+    `${API_URL}/workspace`,
     { name },
     authHeader()
   );
@@ -24,7 +22,7 @@ export const createWorkspace = async (name) => {
 
 export const inviteMember = async (workspaceId, email, role = "member") => {
   const response = await axios.post(
-    `${API_URL}/workspaces/${workspaceId}/invite`,
+    `${API_URL}/workspace/${workspaceId}/invite`,
     { email, role },
     authHeader()
   );
@@ -33,7 +31,7 @@ export const inviteMember = async (workspaceId, email, role = "member") => {
 
 export const removeMember = async (workspaceId, userId) => {
   const response = await axios.delete(
-    `${API_URL}/workspaces/${workspaceId}/members/${userId}`,
+    `${API_URL}/workspace/${workspaceId}/members/${userId}`,
     authHeader()
   );
   return response.data;
