@@ -1,12 +1,4 @@
-# Dependencies
 node_modules/
-
-# Environment files
-.env
-
-# Build output
 dist/
-
-# OS files
-.DS_Store
-Thumbs.db
+.env
+.env.local
